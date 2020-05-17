@@ -5,17 +5,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileWork {
-    List<String> fileContent = new ArrayList<>();
-    File file;
+    private List<String> fileContent = new ArrayList<>();
+    private File file;
 
     public FileWork() throws IOException {
         super();
         readDialogues();
+        for (String str: fileContent) {
+            Separator.separateOnLines(str);
+        }
     }
 
     public FileWork(File f) throws IOException {
         file = f;
         readDialogues();
+        for (String str: fileContent) {
+            Separator.separateOnLines(str);
+        }
     }
 
     public void setFile(File file) {

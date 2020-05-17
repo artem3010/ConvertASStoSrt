@@ -6,21 +6,15 @@ import java.util.List;
 public class Converter {
     private static List<StringBuffer> subsSTR = new ArrayList<>();
 
-    public static enum tumbler {
-        FIRSTLINE,
-        NOTFIRSTLINE,
+    public void convertASStoSRT(List<String> strings){
+        subsSTR = Separator.separateDialogue(strings);
+        DeleteSuperfluous.fullTreatmentASS(subsSTR.get(0));
     }
 
-    private static boolean searchDialogue(String str) {
-        if (str.indexOf("Dialogue:") != -1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
 
     public List<StringBuffer> getSubsSTR() {
+
         return subsSTR;
     }
 

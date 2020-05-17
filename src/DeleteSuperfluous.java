@@ -7,23 +7,21 @@ public class DeleteSuperfluous {
         line = null;
     }
 
-    public DeleteSuperfluous(StringBuffer line) {
-        this.line = line;
-        reduceSuperfluous(this.line);
+    public static void fullTreatmentASS(StringBuffer line){
+        reduceBraces(line);
     }
-
     public void setLine(StringBuffer line) {
         this.line = line;
     }
 
-    public void reduceSuperfluous(StringBuffer line) {
+    public static void reduceBraces(StringBuffer line) {
         int openBracket = line.indexOf("{");
-        int closeBracket = line.indexOf("}");
+        int closeBracket = line.indexOf("}")+1;
 
-        while (openBracket != -1 || closeBracket != -1) {
+        while (openBracket > -1 && (closeBracket > -1 && closeBracket >= openBracket)) {
             line.delete(openBracket, closeBracket);
             openBracket = line.indexOf("{");
-            closeBracket = line.indexOf("}");
+            closeBracket = line.indexOf("}")+1;
         }
 
     }

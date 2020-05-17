@@ -29,12 +29,12 @@ public class Dialogue {
         return number;
     }
 
-    public void writeInFile(File file){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file.getName()));
-            bw.write(number+"\n");
-            bw.write(time[0]+" --> "+ time[1]+"\n");
-            bw.write(phrase+"\n\n");
+    public void writeInFile(BufferedWriter bw){
+        try{
+
+            bw.write(number+System.getProperty("line.separator"));
+            bw.write(time[0]+" --> "+ time[1]+System.getProperty("line.separator"));
+            bw.write(phrase+System.getProperty("line.separator")+System.getProperty("line.separator"));
 
         } catch (IOException e) {
             System.out.println(e.getMessage());

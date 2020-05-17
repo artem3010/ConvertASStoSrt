@@ -1,24 +1,8 @@
 import java.util.List;
 
 public class SearchNeedfuls {
-    private StringBuffer line;
 
-
-    public SearchNeedfuls() {
-        super();
-        line = null;
-    }
-
-    public static void fullTreatmentASS(StringBuffer line) {
-
-        //reduceBraces(line);
-    }
-
-    public void setLine(StringBuffer line) {
-        this.line = line;
-    }
-
-    public static void reduceBraces(StringBuffer line) {
+    private static void reduceBraces(StringBuffer line) {
         int openBracket = line.indexOf("{");
         int closeBracket = line.indexOf("}") + 1;
 
@@ -30,8 +14,20 @@ public class SearchNeedfuls {
 
     }
 
+    private static void deleteSlashElements (StringBuffer line){
+        while (line.indexOf("\\h") > 0) {
+            line.delete(line.indexOf("\\h"), line.indexOf("\\h") + 2);
+        }
+        while (line.indexOf("\\N") != -1) {
+            line.delete(line.indexOf("\\N"), line.indexOf("\\N") + 2);
+        }
+
+    }
+
 
     public static StringBuffer definePhrase(StringBuffer line) {
+        deleteSlashElements(line);
+        reduceBraces(line);
         StringBuffer phrase = new StringBuffer();
         phrase.append(line.substring(line.lastIndexOf(",,")+2,line.length()-1));
         return  phrase;
@@ -54,15 +50,7 @@ public class SearchNeedfuls {
         return time;
     }
 
-        public static void deleteSlashElements (StringBuffer line){
-            while (line.indexOf("\\h") > 0) {
-                line.delete(line.indexOf("\\h"), line.indexOf("\\h") + 2);
-            }
-            while (line.indexOf("\\N") != -1) {
-                line.delete(line.indexOf("\\N"), line.indexOf("\\N") + 2);
-            }
 
-        }
 
 
     }

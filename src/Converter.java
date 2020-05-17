@@ -10,22 +10,9 @@ public class Converter {
         subsSTR = Separator.separateDialogue(strings);
 
        for (StringBuffer str: subsSTR) {
-            SearchNeedfuls.reduceBraces(str);
-            SearchNeedfuls.deleteSlashElements(str);
-            dialogues.add(new Dialogue(dialogues.size()+1,SearchNeedfuls.defineTime(str),SearchNeedfuls.definePhrase(str)));
+            dialogues.add(new Dialogue(dialogues.size()+1,
+                    SearchNeedfuls.defineTime(str),SearchNeedfuls.definePhrase(str)));
        }
        return dialogues;
     }
-
-
-    public List<StringBuffer> getSubsSTR() {
-
-        return subsSTR;
-    }
-
-    public void convertASStoTXT(File file) {
-
-    }
-
-
 }

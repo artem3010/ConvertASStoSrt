@@ -1,17 +1,21 @@
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Converter {
     private static List<StringBuffer> subsSTR = new ArrayList<>();
 
-    public void convertASStoSRT(List<String> strings){
+    public List<Dialogue> convertASStoSRT(List<String> strings) {
+        List<Dialogue> dialogues = new ArrayList<>();
         subsSTR = Separator.separateDialogue(strings);
-        DeleteSuperfluous.deleteNotDialogue(subsSTR);
-       // DeleteSuperfluous.fullTreatmentASS(subsSTR.get(0));
-    }
 
+       for (StringBuffer str: subsSTR) {
+            SearchNeedfuls.reduceBraces(str);
+            SearchNeedfuls.deleteSlashElements(str);
+            dialogues.add(new Dialogue(dialogues.size()+1,SearchNeedfuls.defineTime(str),SearchNeedfuls.definePhrase(str)));
+       }
+       return dialogues;
+    }
 
 
     public List<StringBuffer> getSubsSTR() {
@@ -19,12 +23,9 @@ public class Converter {
         return subsSTR;
     }
 
-    public void convertASStoTXT(File file){
+    public void convertASStoTXT(File file) {
 
     }
-
-
-
 
 
 }

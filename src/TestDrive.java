@@ -9,9 +9,7 @@ public class TestDrive {
         File f = new File("C:\\Users\\Artem\\Downloads\\kekai senen\\1\\[HorribleSubs] Kekkai Sensen - 01 [720p].ass" );
         Converter converter = new Converter();
         FileWork fileWork = new FileWork(f);
-//        for (String str: fileWork.getFileContent()) {
-//           System.out.println(str);
-//        }
+
         dialogues = converter.convertASStoSRT(fileWork.getFileContent());
         for (Dialogue diag: dialogues) {
             System.out.println( diag.getNumber());

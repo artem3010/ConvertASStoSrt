@@ -8,7 +8,8 @@ public class Converter {
 
     public void convertASStoSRT(List<String> strings){
         subsSTR = Separator.separateDialogue(strings);
-        DeleteSuperfluous.fullTreatmentASS(subsSTR.get(0));
+        DeleteSuperfluous.deleteNotDialogue(subsSTR);
+       // DeleteSuperfluous.fullTreatmentASS(subsSTR.get(0));
     }
 
 

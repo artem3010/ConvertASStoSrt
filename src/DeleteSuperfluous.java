@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class DeleteSuperfluous {
     private StringBuffer line;
 
@@ -26,5 +28,16 @@ public class DeleteSuperfluous {
 
     }
 
+    public static void defineTime(StringBuffer line){
+        int startTime = line.indexOf(",")+1;
 
+    }
+
+    public static void deleteNotDialogue(List<StringBuffer> string){
+        for (int i = 0 ; i<string.size(); i++) {
+            if (string.get(i).indexOf("Dialogue:")==-1){
+                string.remove(i);
+            }
+        }
+    }
 }

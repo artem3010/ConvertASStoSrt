@@ -30,6 +30,7 @@ public class SearchNeedfuls {
 
     }
 
+
     public static StringBuffer definePhrase(StringBuffer line) {
         StringBuffer phrase = new StringBuffer();
         phrase.append(line.substring(line.lastIndexOf(",,")+2,line.length()-1));
@@ -45,8 +46,10 @@ public class SearchNeedfuls {
         int startTime = line.indexOf(",") > 0 ? line.indexOf(",") + 1 : 0;
         if (line.indexOf(",") > 0) {
             time[0].append(line.substring(startTime, startTime + timeLength));
-            startTime = startTime + timeLength + 2;
+            time[0].replace(time[0].indexOf("."),time[0].indexOf(".")+1,",");
+            startTime = startTime + timeLength + 1;
             time[1].append(line.substring(startTime, startTime + timeLength));
+            time[1].replace(time[1].indexOf("."),time[1].indexOf(".")+1,",");
         }
         return time;
     }

@@ -47,9 +47,25 @@ public class Dialogue {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dialogue dialogue = (Dialogue) o;
+        if (this.phrase == dialogue.phrase){
+            return true;
+        }
+        return number == dialogue.number &&
+                Arrays.equals(time, dialogue.time) &&
+                Objects.equals(phrase, dialogue.phrase);
+    }
 
-
-
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(phrase, number);
+        result = 31 * result + Arrays.hashCode(time);
+        return result;
+    }
 
     public void setNumber(int number) {
         this.number = number;

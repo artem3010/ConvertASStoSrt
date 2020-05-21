@@ -25,16 +25,17 @@ public class SearchNeedfuls {
     }
 
 
-    public static StringBuffer definePhrase(StringBuffer line) {
+    public static String definePhrase(StringBuffer line) {
         deleteSlashElements(line);
         reduceBraces(line);
         StringBuffer phrase = new StringBuffer();
         phrase.append(line.substring(line.lastIndexOf(",,")+2,line.length()-1));
-        return  phrase;
+        String phraseString = phrase.toString();
+        return  phraseString;
     }
 
 
-    public static StringBuffer[] defineTime(StringBuffer line) {
+    public static String[] defineTime(StringBuffer line) {
         StringBuffer[] time = new StringBuffer[2];
         time[0] = new StringBuffer();
         time[1] = new StringBuffer();
@@ -47,7 +48,8 @@ public class SearchNeedfuls {
             time[1].append(line.substring(startTime, startTime + timeLength));
             time[1].replace(time[1].indexOf("."),time[1].indexOf(".")+1,",");
         }
-        return time;
+        String[] timeString = {time[0].toString(), time[1].toString()};
+        return timeString;
     }
 
 

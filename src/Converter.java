@@ -31,30 +31,34 @@ public class Converter {
         subsSTR = Separator.separateDialogue(fileWork.getFileContent());
 
         for (StringBuffer str : subsSTR) {
-            dialogues.add(new Dialogue(dialogues.size() + 1,
+            if (dialogues.size()>0
+                    && !new Dialogue(dialogues.size() + 1,
+                    SearchNeedfuls.defineTime(str),
+                            SearchNeedfuls.definePhrase(str)).equals(
+                                    dialogues.get(dialogues.size()-1))) {
+                dialogues.add(new Dialogue(dialogues.size() + 1,
+                        SearchNeedfuls.defineTime(str), SearchNeedfuls.definePhrase(str)));
+            } else if (dialogues.size()==0){
+                dialogues.add(new Dialogue(dialogues.size() + 1,
                     SearchNeedfuls.defineTime(str), SearchNeedfuls.definePhrase(str)));
+            }
 
         }
-        for (int i = 30; i<dialogues.size() ; i++) {
-            deleteDuplicate(dialogues, dialogues.get(i));
+//        for (int i = 30; i<dialogues.size() ; i++) {
+//            dialogues.get(i).deleteDublicate(dialogues);
+//        }
 
-        }
         for (int i = 0; i<dialogues.size() ; i++) {
+
             dialogues.get(i).setNumber(i + 1);
+
 
         }
 
         outInFile(file);
     }
 
-    public void deleteDuplicate(List<Dialogue> list, Dialogue d){
-        for (int i = d.getNumber(); i<list.size() ; i++) {
-            String diagString = d.toString();
-            if (diagString.equals(list.get(i).getPhrase().toString())){
-                list.remove(i);
-            }
-        }
-    }
+
 
 
 

@@ -8,25 +8,25 @@ import java.util.List;
 import java.util.Objects;
 
 public class Dialogue {
-    private StringBuffer[] time = new StringBuffer[2];
-    private StringBuffer phrase;
+    private String[] time = new String[2];
+    private String phrase;
     private int number;
 
     public Dialogue() {
         super();
     }
 
-    public Dialogue(int number, StringBuffer[] time, StringBuffer phrase) {
+    public Dialogue(int number, String[] time, String phrase) {
         this.number = number;
         this.time = time;
         this.phrase = phrase;
     }
 
-    public StringBuffer[] getTime() {
+    public String[] getTime() {
         return time;
     }
 
-    public StringBuffer getPhrase() {
+    public String getPhrase() {
         return phrase;
     }
 
@@ -47,17 +47,25 @@ public class Dialogue {
 
     }
 
+    public void deleteDublicate(List<Dialogue> list) {
+        for (int i = this.number; i < list.size(); i++) {
+            if (this.equals(list.get(i))) {
+                list.remove(i);
+            }
+        }
+
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dialogue dialogue = (Dialogue) o;
-        if (this.phrase == dialogue.phrase){
-            return true;
-        }
-        return number == dialogue.number &&
-                Arrays.equals(time, dialogue.time) &&
-                Objects.equals(phrase, dialogue.phrase);
+        return //number == dialogue.number &&
+              //time[0].equals(dialogue.getTime()[0]) &&
+              //time[1].equals(dialogue.getTime()[1]) &&
+               phrase.equals(dialogue.phrase);
     }
 
     @Override

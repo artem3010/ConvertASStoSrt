@@ -11,10 +11,6 @@ public class Converter {
     private FileWork fileWork;
     private List<Dialogue> dialogues = new ArrayList<>();
 
-    public Converter() {
-        super();
-    }
-
     public List<Dialogue> getDialogues() {
         return dialogues;
     }
@@ -27,7 +23,6 @@ public class Converter {
             System.out.println(e.getMessage());
         }
     }
-
 
     public void convertASStoSRT(File file) {
         subsSTR = Separator.separateDialogue(fileWork.getFileContent());

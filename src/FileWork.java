@@ -8,14 +8,6 @@ public class FileWork {
     private List<String> fileContent = new ArrayList<>();
     private File file;
 
-    public FileWork() throws IOException {
-        super();
-        readDialogues();
-        for (String str: fileContent) {
-            Separator.separateOnLines(str);
-        }
-    }
-
     public FileWork(File f) throws IOException {
         file = f;
         readDialogues();
@@ -23,7 +15,6 @@ public class FileWork {
             Separator.separateOnLines(str);
         }
     }
-
 
     public List<String> getFileContent() {
         return fileContent;
@@ -59,24 +50,6 @@ public class FileWork {
 
     private boolean isTXT(String string){
         return ((string.indexOf(".txt")!=-1)?true:false);
-    }
-
-    public static boolean isDialogue(String str) {
-        char[] tempChar = str.toCharArray();
-        String dialogue = "Dialogue";
-        String temp = "";
-        if (str.length() == 0) {
-            return false;
-        } else {
-            for (int i = 0; i < dialogue.length(); i++) {
-                temp += tempChar[i];
-            }
-            if (temp.equals(dialogue)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
     }
 
     public File getFile() {

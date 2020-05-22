@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Separator {
-    public static enum tumbler {
+    public enum tumbler {
         FIRSTLINE,
         NOTFIRSTLINE,
     }

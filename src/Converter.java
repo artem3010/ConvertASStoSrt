@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Converter {
     private static List<StringBuffer> subsSTR = new ArrayList<>();
     private FileWork fileWork;
@@ -27,47 +28,33 @@ public class Converter {
         }
     }
 
+
     public void convertASStoSRT(File file) {
         subsSTR = Separator.separateDialogue(fileWork.getFileContent());
 
         for (StringBuffer str : subsSTR) {
-            if (dialogues.size()>0
+            if (dialogues.size() > 0
                     && !new Dialogue(dialogues.size() + 1,
                     SearchNeedfuls.defineTime(str),
-                            SearchNeedfuls.definePhrase(str)).equals(
-                                    dialogues.get(dialogues.size()-1))) {
+                    SearchNeedfuls.definePhrase(str)).isInCollection(dialogues))
+            {
                 dialogues.add(new Dialogue(dialogues.size() + 1,
                         SearchNeedfuls.defineTime(str), SearchNeedfuls.definePhrase(str)));
-            } else if (dialogues.size()==0){
+            } else if (dialogues.size() == 0) {
                 dialogues.add(new Dialogue(dialogues.size() + 1,
-                    SearchNeedfuls.defineTime(str), SearchNeedfuls.definePhrase(str)));
+                        SearchNeedfuls.defineTime(str), SearchNeedfuls.definePhrase(str)));
             }
 
         }
-//        for (int i = 30; i<dialogues.size() ; i++) {
-//            dialogues.get(i).deleteDublicate(dialogues);
-//        }
-
-        for (int i = 0; i<dialogues.size() ; i++) {
-
-            dialogues.get(i).setNumber(i + 1);
-
-
-        }
-
         outInFile(file);
     }
-
-
-
-
 
     private void outInFile(File file) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(file.getPath()))) {
             for (Dialogue diag : dialogues) {
                 diag.writeInFile(bw);
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }

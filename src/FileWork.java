@@ -24,9 +24,6 @@ public class FileWork {
         }
     }
 
-    public void setFile(File file) {
-        this.file = file;
-    }
 
     public List<String> getFileContent() {
         return fileContent;
@@ -60,8 +57,6 @@ public class FileWork {
         }
     }
 
-
-
     private boolean isTXT(String string){
         return ((string.indexOf(".txt")!=-1)?true:false);
     }
@@ -82,6 +77,10 @@ public class FileWork {
                 return false;
             }
         }
+    }
+
+    public File getFile() {
+        return file;
     }
 }
 

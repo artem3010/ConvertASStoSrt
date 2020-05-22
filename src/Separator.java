@@ -1,7 +1,5 @@
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
-import java.util.TreeMap;
 
 public class Separator {
     public static enum tumbler {

@@ -1,8 +1,5 @@
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -36,26 +33,23 @@ public class Dialogue {
 
     public void writeInFile(BufferedWriter bw) {
         try {
-
             bw.write(number + System.getProperty("line.separator"));
             bw.write(time[0] + " --> " + time[1] + System.getProperty("line.separator"));
             bw.write(phrase + System.getProperty("line.separator") + System.getProperty("line.separator"));
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
 
     }
 
-    public void deleteDublicate(List<Dialogue> list) {
-        for (int i = this.number; i < list.size(); i++) {
-            if (this.equals(list.get(i))) {
-                list.remove(i);
+    public boolean isInCollection(List<Dialogue> list){
+        for (Dialogue d :list ) {
+            if(d.equals(this)){
+                return true;
             }
         }
-
+        return false;
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -63,9 +57,11 @@ public class Dialogue {
         if (o == null || getClass() != o.getClass()) return false;
         Dialogue dialogue = (Dialogue) o;
         return //number == dialogue.number &&
-              //time[0].equals(dialogue.getTime()[0]) &&
-              //time[1].equals(dialogue.getTime()[1]) &&
-               phrase.equals(dialogue.phrase);
+                (time[0].equals(dialogue.getTime()[0]) &&
+                time[1].equals(dialogue.getTime()[1]) &&
+                phrase.equals(dialogue.phrase))||(time[0].equals(dialogue.getTime()[0]) &&
+                        time[1].equals(dialogue.getTime()[1]))||(time[1].equals(dialogue.getTime()[0]) &&
+                        phrase.equals(dialogue.phrase));
     }
 
     @Override
@@ -78,5 +74,4 @@ public class Dialogue {
     public void setNumber(int number) {
         this.number = number;
     }
-
 }

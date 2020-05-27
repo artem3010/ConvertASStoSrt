@@ -56,8 +56,6 @@ class SeparatorTest {
         expected.add("Dialogue: 5,0:00:10.40,0:00:12.11,It,,0,0,0,,Как поживаешь?");
         expected.add("Dialogue: 5,0:00:12.11,0:00:13.74,It,,0,0,0,,У меня всё хорошо.");
         expected.add("Dialogue: 5,0:00:14.49,0:00:18.28,It,,0,0,0,,Уже полгода прошло с тех пор, как я переехал в этот город.");
-        assertEquals( actual,expected);
-
-
+        assertEquals( expected,actual);
     }
 }

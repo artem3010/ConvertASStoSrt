@@ -33,8 +33,6 @@ public class SearchNeedfuls {
         return phraseString;
     }
 
-
-
     public static String[] defineTime(StringBuffer line) {
         StringBuffer[] time = new StringBuffer[2];
         time[0] = new StringBuffer();
@@ -51,6 +49,5 @@ public class SearchNeedfuls {
         String[] timeString = {time[0].toString(), time[1].toString()};
         return timeString;
     }
-
 
 }

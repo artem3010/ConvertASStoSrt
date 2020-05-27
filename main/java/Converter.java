@@ -31,8 +31,7 @@ public class Converter {
             if (dialogues.size() > 0
                     && !new Dialogue(dialogues.size() + 1,
                     SearchNeedfuls.defineTime(str),
-                    SearchNeedfuls.definePhrase(str)).isInCollection(dialogues))
-            {
+                    SearchNeedfuls.definePhrase(str)).isInCollection(dialogues)) {
                 dialogues.add(new Dialogue(dialogues.size() + 1,
                         SearchNeedfuls.defineTime(str), SearchNeedfuls.definePhrase(str)));
             } else if (dialogues.size() == 0) {

@@ -42,9 +42,9 @@ public class Dialogue {
 
     }
 
-    public boolean isInCollection(List<Dialogue> list){
-        for (Dialogue d :list ) {
-            if(d.equals(this)){
+    public boolean isInCollection(List<Dialogue> list) {
+        for (Dialogue d : list) {
+            if (d.equals(this)) {
                 return true;
             }
         }
@@ -56,12 +56,11 @@ public class Dialogue {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dialogue dialogue = (Dialogue) o;
-        return //number == dialogue.number &&
-                (time[0].equals(dialogue.getTime()[0]) &&
+        return (time[0].equals(dialogue.getTime()[0]) &&
                 time[1].equals(dialogue.getTime()[1]) &&
-                phrase.equals(dialogue.phrase))||(time[0].equals(dialogue.getTime()[0]) &&
-                        time[1].equals(dialogue.getTime()[1]))||(time[1].equals(dialogue.getTime()[0]) &&
-                        phrase.equals(dialogue.phrase));
+                phrase.equals(dialogue.phrase)) || (time[0].equals(dialogue.getTime()[0]) &&
+                time[1].equals(dialogue.getTime()[1])) || (time[1].equals(dialogue.getTime()[0]) &&
+                phrase.equals(dialogue.phrase));
     }
 
     @Override

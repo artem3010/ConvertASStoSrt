@@ -11,7 +11,7 @@ public class FileWork {
     public FileWork(File f) throws IOException {
         file = f;
         readDialogues();
-        for (String str: fileContent) {
+        for (String str : fileContent) {
             Separator.separateOnLines(str);
         }
     }
@@ -36,20 +36,21 @@ public class FileWork {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }else {
+        } else {
             try {
                 byte[] bytes = Files.readAllBytes(Paths.get(file.getPath()));
-                stringInByte = new String (bytes, "UTF-8");
+                stringInByte = new String(bytes, "UTF-8");
             } catch (IOException e) {
-                System.out.println(e.getMessage());;
+                System.out.println(e.getMessage());
+                ;
             }
             fileContent = Separator.separateOnLines(stringInByte);
 
         }
     }
 
-    private boolean isTXT(String string){
-        return ((string.indexOf(".txt")!=-1)?true:false);
+    private boolean isTXT(String string) {
+        return ((string.indexOf(".txt") != -1) ? true : false);
     }
 
     public File getFile() {

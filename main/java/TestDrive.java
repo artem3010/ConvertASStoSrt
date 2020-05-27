@@ -8,12 +8,6 @@ public class TestDrive {
         File f2 = new File("C:\\Users\\Artem\\Downloads\\kekai senen\\1.srt");
         Converter converter = new Converter(f);
         converter.convertASStoSRT(f2);
-        List<Dialogue> dialogues =converter.getDialogues();
-        for (Dialogue diag: dialogues) {
-
-            System.out.println( diag.getNumber());
-            System.out.println(diag.getTime()[0]+" --> "+diag.getTime()[1]);
-            System.out.println(diag.getPhrase()+" \n_____________________________________");
-        }
+        List<Dialogue> dialogues = converter.getDialogues();
     }
 }

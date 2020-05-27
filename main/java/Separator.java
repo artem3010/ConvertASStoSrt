@@ -8,13 +8,14 @@ public class Separator {
     }
 
     public static List<String> separateOnLines(String string) {
-        char[] tempChar = string.toCharArray();
+        String newString = string+"\u0000";
+        char[] tempChar = newString.toCharArray();
         List<String> list = new ArrayList<>();
         String temp = "";
         for (char ch : tempChar) {
-            if (ch != '\n') {
+            if (ch != '\u0000' && ch!='\n' ) {
                 temp += ch;
-            } else {
+            }else {
                 list.add(temp);
                 temp = "";
             }

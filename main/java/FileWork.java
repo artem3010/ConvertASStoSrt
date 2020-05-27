@@ -42,9 +42,8 @@ public class FileWork {
                 stringInByte = new String(bytes, "UTF-8");
             } catch (IOException e) {
                 System.out.println(e.getMessage());
-                ;
             }
-            fileContent = Separator.separateOnLines(stringInByte);
+             fileContent = Separator.separateOnLines(stringInByte);
 
         }
     }

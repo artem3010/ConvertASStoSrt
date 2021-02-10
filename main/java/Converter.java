@@ -10,18 +10,13 @@ public class Converter {
     private static List<StringBuffer> subsSTR = new ArrayList<>();
     private FileWork fileWork;
     private List<Dialogue> dialogues = new ArrayList<>();
-
     public List<Dialogue> getDialogues() {
         return dialogues;
     }
 
     public Converter(File file) {
         super();
-        try {
-            this.fileWork = new FileWork(file);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        this.fileWork = new FileWork(file);
     }
 
     public void convertASStoSRT(File file) {

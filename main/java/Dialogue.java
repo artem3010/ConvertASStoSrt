@@ -8,11 +8,6 @@ public class Dialogue {
     private String[] time = new String[2];
     private String phrase;
     private int number;
-
-    public Dialogue() {
-        super();
-    }
-
     public Dialogue(int number, String[] time, String phrase) {
         this.number = number;
         this.time = time;
@@ -21,14 +16,6 @@ public class Dialogue {
 
     public String[] getTime() {
         return time;
-    }
-
-    public String getPhrase() {
-        return phrase;
-    }
-
-    public int getNumber() {
-        return number;
     }
 
     public void writeInFile(BufferedWriter bw) {

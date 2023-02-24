@@ -7,7 +7,7 @@
         <property name="connection.driver_class">org.postgresql.Driver</property>
         <property name="connection.url">jdbc:postgresql://localhost:5432/phrases?useSSL=false</property>
         <property name="connection.username">postgres</property>
-        <property name="connection.password">3228</property>
+        <property name="connection.password">password</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
         <property name="connection.pool_size">10</property>
         <!-- Select our SQL dialect -->
@@ -19,6 +19,6 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">validate</property>
 
-        <mapping class="Phrase"></mapping>
+        <mapping class="com.artem3010.converter.Phrase"></mapping>
     </session-factory>
 </hibernate-configuration>

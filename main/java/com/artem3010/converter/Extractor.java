@@ -1,3 +1,5 @@
+package com.artem3010.converter;
+
 public class Extractor {
     static private int incrementer;
 
@@ -26,9 +28,9 @@ public class Extractor {
             }
         }
         stringHour = strTime.substring(0, indexesColon[0]);
-        stringMinutes = strTime.substring(indexesColon[0]+1, indexesColon[1]);
-        stringSeconds = strTime.substring(indexesColon[1]+1, indexDot);
-        stringMseconds = strTime.substring(indexDot+1);
+        stringMinutes = strTime.substring(indexesColon[0] + 1, indexesColon[1]);
+        stringSeconds = strTime.substring(indexesColon[1] + 1, indexDot);
+        stringMseconds = strTime.substring(indexDot + 1);
 
 
         return new int[]{Integer.parseInt(stringHour), Integer.parseInt(stringMinutes),
@@ -44,34 +46,32 @@ public class Extractor {
     }
 
     static public Phrase extractPhrase(String str) {
-        StringBuilder stringBuilder = new StringBuilder(str);
         int[] indexesCommas = new int[9];
         int countCommas = 0;
         char[] tempArray = str.toCharArray();
 
         for (int i = 0; i < tempArray.length; i++) {
-            if (tempArray[i] == ',' && countCommas<9) {
+            if (tempArray[i] == ',' && countCommas < 9) {
                 indexesCommas[countCommas] = i;
                 countCommas++;
             }
         }
-            String strTimeBegin = str.substring(indexesCommas[0]+1, indexesCommas[1]);//start time after first comma (by SSA specification)
-            String strTimeEnd = str.substring(indexesCommas[1]+1, indexesCommas[2]);  //start time after first comma (by SSA specification)
-            String phraseText = str.substring(indexesCommas[8]+1);                      // phrase text begin after ninth comma (by SSA specification)
-
+        String strTimeBegin = str.substring(indexesCommas[0] + 1, indexesCommas[1]);//start time after first comma (by SSA specification)
+        String strTimeEnd = str.substring(indexesCommas[1] + 1, indexesCommas[2]);  //start time after first comma (by SSA specification)
+        String phraseText = str.substring(indexesCommas[8] + 1);           // phrase text begin after ninth comma (by SSA specification)
 
 
         phraseText = extractText(phraseText);
         int[] intTimeBegin = splitTime(strTimeBegin);
         int[] intTimeEnd = splitTime(strTimeEnd);
 
-        return new Phrase(++incrementer, intTimeBegin[0], intTimeBegin[1],intTimeBegin[2], intTimeBegin[3],
+        return new Phrase(++incrementer, intTimeBegin[0], intTimeBegin[1], intTimeBegin[2], intTimeBegin[3],
                 intTimeEnd[0], intTimeEnd[1], intTimeEnd[2], intTimeEnd[3], phraseText);
     }
 
 
     private static String extractText(String string) {
-        StringBuffer line = new StringBuffer(string);
+        StringBuilder line = new StringBuilder(string);
         int openBracket = line.indexOf("{");
         int closeBracket = line.indexOf("}") + 1;
 
